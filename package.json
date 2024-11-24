@@ -1,0 +1,44 @@
+{
+  "name": "route-search",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "overrides": {
+    "metro": "0.76.0",
+    "metro-resolver": "0.76.0"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~4.0.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "expo": "~52.0.11",
+    "expo-status-bar": "~2.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.3",
+    "react-native-web": "^0.19.13",
+    "webpack-dev-server": "^5.1.0",
+    "webpack-hot-middleware": "^2.26.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.7.2"
+  },
+  "private": true,
+  "description": "Implementing authorization in React Native.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexanderAnnamov/RouteSearch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlexanderAnnamov/RouteSearch/issues"
+  },
+  "homepage": "https://github.com/AlexanderAnnamov/RouteSearch#readme"
+}
