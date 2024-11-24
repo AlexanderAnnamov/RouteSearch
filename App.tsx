@@ -1,23 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
 
-import Test from './src/components/Test'
+
+import { MainPage } from './src/pages/MainPage';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Lato-Regular': require('./src/assets/fonts/Lato-Regular.ttf'),
+    'Lato-Bold': require('./src/assets/fonts/Lato-Bold.ttf')
+  });
+
+  if (!fontsLoaded) {
+    return <>Загрузка шрифтов</>
+  }
+
   return (
     <View style={styles.container}>
-      <Text>hyhyhyhyhhggggggfdghhyhyhy2</Text>
-      <Test/>
-      <StatusBar style="auto" />
+      <MainPage/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1
   },
+  text: {
+    fontFamily: 'Lato-Regular'
+  }
 });
