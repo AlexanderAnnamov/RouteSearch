@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+
+import Routes from "./src/navigation/Routes";
 import { useFonts } from 'expo-font';
-
-
-import { MainPage } from './src/pages/MainPage';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -16,7 +16,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <MainPage/>
+      <NavigationContainer>
+        <Routes />
+      </NavigationContainer>
     </View>
   );
 }
@@ -25,8 +27,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flex: 1
-  },
-  text: {
-    fontFamily: 'Lato-Regular'
   }
 });
+
+
+

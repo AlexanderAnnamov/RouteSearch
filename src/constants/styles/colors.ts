@@ -7,14 +7,15 @@ const colors = {
     white: '#ffffff',
     black: '#000000',
     background: '#ecf0f1', // Фон
-    textPrimary: '#2c3e50',
 
     textSecondary: '#808080',
     backgroundSecondary: '#F7F7F7',
     textTertirary: '#B2B2B2',
     backgroundAccent: '#41B30B',
     textWhite: '#ffffff',
-    backgroundWhite80: 'rgba(255, 255, 255, 0.8)'
+    backgroundWhite80: 'rgba(255, 255, 255, 0.8)',
+    iconDisabled: '#CCCCCC',
+    textPrimary: '#080808'
   };
   
   export default colors;
