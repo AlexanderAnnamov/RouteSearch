@@ -14,19 +14,20 @@ interface RouteProps {
     childrenAllowed: boolean
 }
 
+
 export const Route: React.FC<RouteProps> = (props) => {
     const [like, pressLike] = React.useState(false)
 
     return (<View style={styles.box}>
         {props.childrenAllowed && <View style={styles.children}>
-           <BabyIcon style={styles.icon} />
+            <BabyIcon style={styles.icon} />
         </View>}
-        
+
         <TouchableOpacity onPress={() => pressLike(!like)} style={styles.like}>
-            {like ? <LikeActiveIcon/> : <LikeIcon/>}
+            {like ? <LikeActiveIcon /> : <LikeIcon />}
         </TouchableOpacity>
         <View style={styles.imageBox}>
-            <Image source={{ uri: props.images[0] }} style={styles.image} />
+            {/* <Image source={{ uri: props.images[0] }} style={styles.image} /> */} 
         </View>
         <Text style={styles.title}>{props.title}</Text>
         <Text style={styles.info}>{props.time} · {props.distance} · {props.countPlaces}</Text>
@@ -89,5 +90,5 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         fontSize: 14,
         color: colors.textSecondary
-    }
+    },
 })

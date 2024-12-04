@@ -13,12 +13,13 @@ interface ButtonProps {
     icon?: TypeIcon
     iconAfterText?: Boolean
     children?: React.ReactNode
-    style?: React.CSSProperties
+    style?: React.CSSProperties,
+    onPress?: () => void
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
   return (
-    <TouchableOpacity style={[styles.box, props.type === 'square' && styles.square]}>
+    <TouchableOpacity onPress={props.onPress} style={[styles.box, props.type === 'square' && styles.square]}>
         {props.icon === 'params' && <ParamsIcon style={styles.icon}/>}
         {props.children && <Text style={styles.text}>{props.children}</Text>}
     </TouchableOpacity>

@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import Routes from "./src/navigation/Routes";
 import { useFonts } from 'expo-font';
@@ -17,7 +18,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Routes />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Routes />
+        </GestureHandlerRootView>
       </NavigationContainer>
     </View>
   );
