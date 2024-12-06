@@ -4,8 +4,10 @@ import BabyIcon from '../../../assets/img/icons/baby.svg'
 import LikeIcon from '../../../assets/img/icons/like.svg'
 import LikeActiveIcon from '../../../assets/img/icons/like-active.svg'
 import colors from '../../../constants/styles/colors';
+import {useNavigation} from '@react-navigation/native';
 
 interface RouteProps {
+    id: string
     images: string[],
     title: string,
     time: string,
@@ -17,27 +19,33 @@ interface RouteProps {
 
 export const Route: React.FC<RouteProps> = (props) => {
     const [like, pressLike] = React.useState(false)
+    const navigation = useNavigation()
 
-    return (<View style={styles.box}>
-        {props.childrenAllowed && <View style={styles.children}>
-            <BabyIcon style={styles.icon} />
-        </View>}
-
-        <TouchableOpacity onPress={() => pressLike(!like)} style={styles.like}>
-            {like ? <LikeActiveIcon /> : <LikeIcon />}
-        </TouchableOpacity>
-        <View style={styles.imageBox}>
-            {/* <Image source={{ uri: props.images[0] }} style={styles.image} /> */} 
-        </View>
-        <Text style={styles.title}>{props.title}</Text>
-        <Text style={styles.info}>{props.time} · {props.distance} · {props.countPlaces}</Text>
-    </View>
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('route-card', {id: props.id})}>
+          <View style={styles.box}>
+              {props.childrenAllowed && <View style={styles.children}>
+                  <BabyIcon style={styles.icon} />
+              </View>}
+              
+              <TouchableOpacity onPress={() => pressLike(!like)} style={styles.like}>
+                  {like ? <LikeActiveIcon /> : <LikeIcon />}
+              </TouchableOpacity>
+              <View style={styles.imageBox}>
+                  {/* <Image source={{ uri: props.images[0] }} style={styles.image} /> */}
+              </View>
+              <Text style={styles.title}>{props.title}</Text>
+              <Text style={styles.info}>{props.time} · {props.distance} · {props.countPlaces}</Text>
+          </View>
+      </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     box: {
-        position: 'relative'
+        position: 'relative',
+        borderWidth: 1,
+        borderColor: colors.black
     },
     children: {
         width: 30,
