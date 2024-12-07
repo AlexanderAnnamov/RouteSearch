@@ -5,6 +5,7 @@ import { useRoute, RouteProp } from '@react-navigation/native';
 import { RootParams } from '../navigation';
 import { BackIcon, DownloadIcon, LikeIcon } from '../components/ui';
 import { RouteTabsInfo } from '../components/ui/RouteTabsInfo/RouteTabsInfo';
+import { Tags } from '../components/ui/Tags/Tags';
 
 const data: Tab[] = [
   { title: 'Пешком', text: '2-4 ч', type: 'time' },
@@ -31,11 +32,9 @@ export const RouteCardPage = () => {
       </View>
       <View style={styles.img}></View>
       <View style={styles.content}>
-        <View>
+        <View style={styles.info}>
           <Text style={styles.title}>На вершине уральской столицы</Text>
-          {tags.map((tag, index) => (
-            <Text key={index}>{tag}</Text>
-          ))}
+          <Tags tags={tags} />
           <RouteTabsInfo tabs={data} />
         </View>
       </View>
@@ -80,7 +79,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight: 28
   },
-  tabInfo: {
-    display: 'flex'
+  info: {
+    display: 'flex',
+    gap: 8
   }
 });
