@@ -1,11 +1,45 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import colors from '../constants/styles/colors';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import { RootParams } from '../navigation';
 import { BackIcon, DownloadIcon, LikeIcon } from '../components/ui';
 import { RouteTabsInfo } from '../components/ui/RouteTabsInfo/RouteTabsInfo';
 import { Tags } from '../components/ui/Tags/Tags';
+import { Places } from '../components/shared/Places/Places';
+
+const placesData: PlaceType[] = [
+  {
+    img: 'https://opis-cdn.tinkoffjournal.ru/mercury/main____shutterstock_1117372322.dapuhxw21c35.jpg?preset=image_760w',
+    title: 'Красивый парк',
+    description: 'Уютное место для отдыха на природе.',
+    travelTime: '10 мин'
+  },
+  {
+    img: 'https://opis-cdn.tinkoffjournal.ru/mercury/main____shutterstock_1117372322.dapuhxw21c35.jpg?preset=image_760w',
+    title: 'Исторический музей',
+    description: 'Интересные экспонаты и много историй.',
+    travelTime: '15 мин'
+  },
+  {
+    img: 'https://opis-cdn.tinkoffjournal.ru/mercury/main____shutterstock_1117372322.dapuhxw21c35.jpg?preset=image_760w',
+    title: 'Место встречи',
+    description: 'Идеально для встреч с друзьями.',
+    travelTime: '5 мин'
+  },
+  {
+    img: 'https://opis-cdn.tinkoffjournal.ru/mercury/main____shutterstock_1117372322.dapuhxw21c35.jpg?preset=image_760w',
+    title: 'Сладкая кофейня',
+    description: 'Отличное место для утреннего кофе и десертов.',
+    travelTime: '8 мин'
+  },
+  {
+    img: 'https://opis-cdn.tinkoffjournal.ru/mercury/main____shutterstock_1117372322.dapuhxw21c35.jpg?preset=image_760w',
+    title: 'Кинотеатр',
+    description: 'Смотрим последние хиты и наслаждаемся попкорном.',
+    travelTime: '20 мин'
+  }
+];
 
 const data: Tab[] = [
   { title: 'Пешком', text: '2-4 ч', type: 'time' },
@@ -18,8 +52,8 @@ const tags = ['#прогулки по городу', '#Культура'];
 type ParamsRoute = RouteProp<RootParams, 'route-card'>;
 
 export const RouteCardPage = () => {
-  const route = useRoute<ParamsRoute>();
-  const { id } = route.params;
+  // const route = useRoute<ParamsRoute>();
+  // const { id } = route.params;
 
   return (
     <View>
@@ -30,13 +64,22 @@ export const RouteCardPage = () => {
           <LikeIcon />
         </View>
       </View>
-      <View style={styles.img}></View>
+      <Image
+        source={{ uri: 'https://nashural.ru/assets/uploads/photo_2023-09-24_17-03-54-2.jpg' }}
+        style={styles.img}
+      ></Image>
       <View style={styles.content}>
         <View style={styles.info}>
           <Text style={styles.title}>На вершине уральской столицы</Text>
           <Tags tags={tags} />
           <RouteTabsInfo tabs={data} />
         </View>
+        <Text style={styles.text}>
+          Это увлекательное путешествие по современным высоткам Екатеринбурга, где вы сможете
+          насладиться захватывающим панорамным видом на город и окунуться в мир архитектурных
+          шедевров.
+        </Text>
+        <Places places={placesData} />
       </View>
     </View>
   );
@@ -82,5 +125,10 @@ const styles = StyleSheet.create({
   info: {
     display: 'flex',
     gap: 8
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 22
   }
 });
