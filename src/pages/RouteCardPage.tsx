@@ -4,6 +4,13 @@ import colors from '../constants/styles/colors';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import { RootParams } from '../navigation';
 import { BackIcon, DownloadIcon, LikeIcon } from '../components/ui';
+import { RouteTabsInfo } from '../components/ui/RouteTabsInfo/RouteTabsInfo';
+
+const data: Tab[] = [
+  { title: 'Пешком', text: '2-4 ч', type: 'time' },
+  { title: 'Путь', text: '30 км', type: 'way' },
+  { title: 'Мест', text: '5', type: 'places' }
+];
 
 const tags = ['#прогулки по городу', '#Культура'];
 
@@ -29,10 +36,7 @@ export const RouteCardPage = () => {
           {tags.map((tag, index) => (
             <Text key={index}>{tag}</Text>
           ))}
-          <View>
-            <Text>Пешком</Text>
-            <Text>2-4 часа</Text>
-          </View>
+          <RouteTabsInfo tabs={data} />
         </View>
       </View>
     </View>
@@ -75,5 +79,8 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '600',
     lineHeight: 28
+  },
+  tabInfo: {
+    display: 'flex'
   }
 });
