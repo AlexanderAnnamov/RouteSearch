@@ -10,28 +10,29 @@ import HomeIcon from '../assets/img/icons/home.svg'
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import colors from "../constants/styles/colors";
+import { RootStackParamList } from "./Routes";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 export const TabBar = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Главная"
+      initialRouteName="Main"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: string;
 
-          if (route.name === "Маршрут") {
+          if (route.name === "Route") {
             iconName = focused
               ? "ios-information-circle"
               : "ios-information-circle-outline";
             return (
               <RouteIcon stroke={color} />
             );
-          } else if (route.name === "Главная") {
+          } else if (route.name === "Main") {
             iconName = focused ? "ios-list" : "ios-list-outline";
             return <HomeIcon stroke={color} />;
-          } else if (route.name === "Профиль") {
+          } else if (route.name === "Profile") {
             iconName = focused ? "ios-list" : "ios-list-outline";
             return <ProfileIcon stroke={color} />;
           }
@@ -53,9 +54,9 @@ export const TabBar = () => {
         },
       })}
     >
-      <Tab.Screen name="Маршрут" component={RoutePage} />
-      <Tab.Screen name="Главная" component={MainPage} />
-      <Tab.Screen name="Профиль" component={ProfilePage} />
+      <Tab.Screen name="Route" component={RoutePage} />
+      <Tab.Screen name="Main" component={MainPage} />
+      <Tab.Screen name="Profile" component={ProfilePage} />
     </Tab.Navigator>
   );
 };

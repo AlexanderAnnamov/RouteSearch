@@ -15,7 +15,9 @@ const colors = {
     textWhite: '#ffffff',
     backgroundWhite80: 'rgba(255, 255, 255, 0.8)',
     iconDisabled: '#CCCCCC',
-    textPrimary: '#080808'
+    textPrimary: '#080808',
+    accent400: '#67C23C',
+    accent600: '#39940E'
   };
   
   export default colors;

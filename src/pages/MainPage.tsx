@@ -5,8 +5,10 @@ import { View, StyleSheet } from "react-native";
 import { Filters } from "../components/main/Filters";
 import { Routes } from "../components/main/routes/Routes";
 import Places from "../components/main/placees/Places";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/Routes";
 
-export const MainPage = () => {
+export const MainPage = ({ navigation }: NativeStackScreenProps<RootStackParamList, 'Main'>) => {
   const [selectedTab, setSelectedTab] = React.useState<'routes'| 'places'>('routes')
   return (
     <View style={styles.box}>

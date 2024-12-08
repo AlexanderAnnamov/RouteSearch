@@ -7,14 +7,28 @@ import React from "react";
 // import SignIn from "../pages/SignIn";
 // import SignUp from "../pages/SignUp";
 import TabBar from "./TabBar";
+import { RegistrationPage } from "../pages/RegistrationPage";
+import { LoginPage } from "../pages/LoginPage";
+import { SuccessAuthPage } from "../pages/SuccesAuthPage";
 // import { LEFT_ARROW } from "../../assets";
 
-const Stack = createNativeStackNavigator();
+
+
+export type RootStackParamList = {
+  Registration: undefined;
+  Login: undefined;
+  Main: undefined;
+  Route: undefined;
+  Profile: undefined;
+  SuccessAuth: undefined
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const Routes = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Main"
+      initialRouteName="Registration"
       screenOptions={{
         headerShown: false,
         animationTypeForReplace: "pop",
@@ -22,6 +36,10 @@ const Routes = () => {
         headerTitleAlign: "center",
       }}
     >
+       <Stack.Screen name="Registration" component={RegistrationPage} />
+       <Stack.Screen name="Login" component={LoginPage} />
+       <Stack.Screen name="SuccessAuth" component={SuccessAuthPage} />
+
       <Stack.Screen
         name="Main"
         component={TabBar}
@@ -29,8 +47,7 @@ const Routes = () => {
           title: "Профиль",
         }}
       />
-      {/* <Stack.Screen name="Sign-up" component={SignUp} />
-      <Stack.Screen name="Sign-in" component={SignIn} />
+      {/*<Stack.Screen name="Sign-in" component={SignIn} />
 
       <Stack.Screen name="Language" component={LanguageScreen} />
       <Stack.Screen name="Help" component={HelpScreen} /> */}
