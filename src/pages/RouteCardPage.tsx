@@ -1,5 +1,13 @@
-import React from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import React, { useState } from 'react';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Button,
+  TouchableWithoutFeedback
+} from 'react-native';
 import colors from '../constants/styles/colors';
 import { useRoute, RouteProp } from '@react-navigation/native';
 import { RootParams } from '../navigation';
@@ -54,38 +62,59 @@ type ParamsRoute = RouteProp<RootParams, 'route-card'>;
 export const RouteCardPage = () => {
   // const route = useRoute<ParamsRoute>();
   // const { id } = route.params;
+  const [visible, setVisible] = useState(false);
+
+  const handlePressOutside = () => {
+    if (visible) {
+      setVisible(false);
+    }
+  };
 
   return (
-    <View>
-      <View style={styles.buttonsGroup}>
-        <BackIcon />
-        <View style={styles.rightButtonsGroup}>
-          <DownloadIcon />
-          <LikeIcon />
-        </View>
+    <TouchableWithoutFeedback onPress={handlePressOutside}>
+      <View style={styles.pageContainer}>
+        <ScrollView style={styles.scroll}>
+          <View style={styles.buttonsGroup}>
+            <BackIcon />
+            <View style={styles.rightButtonsGroup}>
+              <DownloadIcon />
+              <LikeIcon />
+            </View>
+          </View>
+          <Image
+            source={{ uri: 'https://nashural.ru/assets/uploads/photo_2023-09-24_17-03-54-2.jpg' }}
+            style={styles.img}
+          ></Image>
+          <View style={styles.content}>
+            <View style={styles.info}>
+              <Text style={styles.title}>На вершине уральской столицы</Text>
+              <Tags tags={tags} />
+              <RouteTabsInfo tabs={data} />
+            </View>
+            <Text style={styles.text}>
+              Это увлекательное путешествие по современным высоткам Екатеринбурга, где вы сможете
+              насладиться захватывающим панорамным видом на город и окунуться в мир архитектурных
+              шедевров.
+            </Text>
+            <Places places={placesData} visible={visible} setVisible={setVisible} />
+          </View>
+          <View>
+            <Button color={colors.backgroundAccent} title='Построить в Яндекс Картах' />
+          </View>
+        </ScrollView>
       </View>
-      <Image
-        source={{ uri: 'https://nashural.ru/assets/uploads/photo_2023-09-24_17-03-54-2.jpg' }}
-        style={styles.img}
-      ></Image>
-      <View style={styles.content}>
-        <View style={styles.info}>
-          <Text style={styles.title}>На вершине уральской столицы</Text>
-          <Tags tags={tags} />
-          <RouteTabsInfo tabs={data} />
-        </View>
-        <Text style={styles.text}>
-          Это увлекательное путешествие по современным высоткам Екатеринбурга, где вы сможете
-          насладиться захватывающим панорамным видом на город и окунуться в мир архитектурных
-          шедевров.
-        </Text>
-        <Places places={placesData} />
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
+  pageContainer: {
+    flex: 1,
+    backgroundColor: colors.white
+  },
+  scroll: {
+    paddingBottom: 60
+  },
   buttonsGroup: {
     width: '100%',
     position: 'absolute',
@@ -108,7 +137,7 @@ const styles = StyleSheet.create({
   content: {
     bottom: 20,
     backgroundColor: colors.white,
-    height: 500,
+    height: '100%',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     paddingHorizontal: 16,
