@@ -16,7 +16,7 @@ export const MainPage = ({ navigation }: NativeStackScreenProps<RootStackParamLi
         <View style={styles.filters}>
           <Filters/>
           <Tabs selectedTab={selectedTab}setSelectedTab={setSelectedTab} />
-            {selectedTab === 'routes' && <Routes/>}
+            {selectedTab === 'routes' && <Routes navigate={navigation.navigate}/>}
             {selectedTab === 'places' && <Places/>}
         </View>
     </View>

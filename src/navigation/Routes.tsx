@@ -13,6 +13,7 @@ import TabBar from "./TabBar";
 import { RegistrationPage } from "../pages/RegistrationPage";
 import { LoginPage } from "../pages/LoginPage";
 import { SuccessAuthPage } from "../pages/SuccesAuthPage";
+import { RouteCardPage } from '../pages/RouteCardPage';
 // import { LEFT_ARROW } from "../../assets";
 
 
@@ -23,7 +24,8 @@ export type RootStackParamList = {
   Main: undefined;
   Route: undefined;
   Profile: undefined;
-  SuccessAuth: undefined
+  SuccessAuth: undefined;
+  RouteCard: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -42,6 +44,7 @@ const Routes = () => {
        <Stack.Screen name="Registration" component={RegistrationPage} />
        <Stack.Screen name="Login" component={LoginPage} />
        <Stack.Screen name="SuccessAuth" component={SuccessAuthPage} />
+       <Stack.Screen name='RouteCard' component={RouteCardPage}/>
 
       <Stack.Screen
         name='Main'

@@ -15,6 +15,8 @@ import { BackIcon, DownloadIcon, LikeIcon } from '../components/ui';
 import { RouteTabsInfo } from '../components/ui/RouteTabsInfo/RouteTabsInfo';
 import { Tags } from '../components/ui/Tags/Tags';
 import { Places } from '../components/shared/Places/Places';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/Routes';
 
 const placesData: PlaceType[] = [
   {
@@ -59,7 +61,7 @@ const tags = ['#прогулки по городу', '#Культура'];
 
 type ParamsRoute = RouteProp<RootParams, 'route-card'>;
 
-export const RouteCardPage = () => {
+export const RouteCardPage = ({ navigation }: NativeStackScreenProps<RootStackParamList, 'RouteCard'>) => {
   // const route = useRoute<ParamsRoute>();
   // const { id } = route.params;
   const [visible, setVisible] = useState(false);
