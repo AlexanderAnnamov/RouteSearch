@@ -1,5 +1,8 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp
+} from '@react-navigation/native-stack';
+import React from 'react';
 
 // import PersonalInfoScreen from "../pages/SettingsScreen/PersonalInfoScreen";
 // import HelpScreen from "../pages/SettingsScreen/HelpScreen";
@@ -31,9 +34,9 @@ const Routes = () => {
       initialRouteName="Registration"
       screenOptions={{
         headerShown: false,
-        animationTypeForReplace: "pop",
-        animation: "slide_from_bottom",
-        headerTitleAlign: "center",
+        animationTypeForReplace: 'pop',
+        animation: 'slide_from_bottom',
+        headerTitleAlign: 'center'
       }}
     >
        <Stack.Screen name="Registration" component={RegistrationPage} />
@@ -41,10 +44,10 @@ const Routes = () => {
        <Stack.Screen name="SuccessAuth" component={SuccessAuthPage} />
 
       <Stack.Screen
-        name="Main"
+        name='Main'
         component={TabBar}
         options={{
-          title: "Профиль",
+          title: 'Профиль'
         }}
       />
       {/*<Stack.Screen name="Sign-in" component={SignIn} />
