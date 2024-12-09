@@ -61,9 +61,9 @@ const tags = ['#прогулки по городу', '#Культура'];
 
 type ParamsRoute = RouteProp<RootParams, 'route-card'>;
 
-export const RouteCardPage = ({ navigation }: NativeStackScreenProps<RootStackParamList, 'RouteCard'>) => {
+export const RouteCardPage = (props: NativeStackScreenProps<RootStackParamList, 'RouteCard'>) => {
   // const route = useRoute<ParamsRoute>();
-  // const { id } = route.params;
+  const { title, description, atributes } = props.route.params;
   const [visible, setVisible] = useState(false);
 
   const handlePressOutside = () => {
@@ -89,14 +89,12 @@ export const RouteCardPage = ({ navigation }: NativeStackScreenProps<RootStackPa
           ></Image>
           <View style={styles.content}>
             <View style={styles.info}>
-              <Text style={styles.title}>На вершине уральской столицы</Text>
+              <Text style={styles.title}>{title}</Text>
               <Tags tags={tags} />
-              <RouteTabsInfo tabs={data} />
+              <RouteTabsInfo tabs={atributes} />
             </View>
             <Text style={styles.text}>
-              Это увлекательное путешествие по современным высоткам Екатеринбурга, где вы сможете
-              насладиться захватывающим панорамным видом на город и окунуться в мир архитектурных
-              шедевров.
+              {description}
             </Text>
             <Places places={placesData} visible={visible} setVisible={setVisible} />
           </View>

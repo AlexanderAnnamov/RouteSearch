@@ -5,7 +5,7 @@ import { Route } from './Route';
 import { RootStackParamList } from '../../../navigation/Routes';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-export const Routes = ({navigate}: {navigate: (route: string) => void}) => {
+export const Routes = ({navigate}: {navigate: (route: string, props?: Record<string, any>) => void}) => {
   return (
     <View style={styles.box}>
       {routes.map((route) => {

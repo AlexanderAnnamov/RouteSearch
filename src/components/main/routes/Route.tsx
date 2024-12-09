@@ -10,17 +10,19 @@ import { RootStackParamList } from '../../../navigation/Routes'
 interface RouteProps {
     images: string[],
     title: string,
+    description: string,
+    atributes: {title: string, text: string, type: string}[],
     time: string,
     distance: string,
     countPlaces: string,
     childrenAllowed: boolean,
-    navigate: (route: string ) => void
+    navigate: (route: string, props?: Record<string, any>) => void
 }
 
 export const Route: React.FC<RouteProps> = (props) => {
     const [like, pressLike] = React.useState(false)
 
-    console.log(props.images[0]);
+    console.log(props.description);
     
 
     return (<View style={styles.box}>
@@ -31,7 +33,8 @@ export const Route: React.FC<RouteProps> = (props) => {
         <TouchableOpacity onPress={() => pressLike(!like)} style={styles.like}>
             {like ? <LikeActiveIcon /> : <LikeIcon />}
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.navigate('RouteCard')} style={styles.imageBox}>
+        <TouchableOpacity onPress={() => props.navigate('RouteCard', { title: props.title, 
+            description: props.description, atributes: props.atributes })} style={styles.imageBox}>
             <Image source={{ uri: props.images[0] }} style={styles.image} />
         </TouchableOpacity>
         <Text style={styles.title}>{props.title}</Text>

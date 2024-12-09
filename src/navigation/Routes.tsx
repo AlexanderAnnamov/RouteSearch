@@ -25,7 +25,11 @@ export type RootStackParamList = {
   Route: undefined;
   Profile: undefined;
   SuccessAuth: undefined;
-  RouteCard: undefined
+  RouteCard: {
+    title: string
+    description: string
+    atributes: {title: string, text: string, type: string}[],
+  }
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
