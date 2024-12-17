@@ -97,7 +97,7 @@ export const LoginPage = ({ navigation }: NativeStackScreenProps<RootStackParamL
                     marginTop: 24,
                 }}>
                     <Text style={{ color: colors.white }}>
-                        {isLoginFields ? 'Продолжить' : 'Зарегестрироваться'}
+                        {isLoginFields ? 'Продолжить' : 'Войти'}
                     </Text>
                 </TouchableOpacity>
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 16, gap: 12, marginLeft: '10%' }}>

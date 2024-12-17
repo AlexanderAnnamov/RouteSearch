@@ -63,7 +63,7 @@ type ParamsRoute = RouteProp<RootParams, 'route-card'>;
 
 export const RouteCardPage = (props: NativeStackScreenProps<RootStackParamList, 'RouteCard'>) => {
   // const route = useRoute<ParamsRoute>();
-  const { title, description, atributes } = props.route.params;
+  const { title, description, atributes, url, places } = props.route.params;
   const [visible, setVisible] = useState(false);
 
   const handlePressOutside = () => {
@@ -96,10 +96,14 @@ export const RouteCardPage = (props: NativeStackScreenProps<RootStackParamList, 
             <Text style={styles.text}>
               {description}
             </Text>
-            <Places places={placesData} visible={visible} setVisible={setVisible} />
+            <Places places={places} visible={visible} setVisible={setVisible} />
           </View>
           <View>
-            <Button color={colors.backgroundAccent} title='Построить в Яндекс Картах' />
+            {/* <Button color={colors.backgroundAccent} title='Построить в Яндекс Картах'> */}
+              <a style={{backgroundColor: colors.backgroundAccent, padding: 16,
+                 color: colors.white, textDecoration: 'none', textAlign: 'center',
+                 marginLeft: 16, marginRight: 16, marginBottom: 16, borderRadius: 8}} href={url}>Построить в Яндекс Картах</a>
+            {/* </Button> */}
           </View>
         </ScrollView>
       </View>

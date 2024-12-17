@@ -44,7 +44,7 @@ export const SuccessAuthPage = ({ navigation }: NativeStackScreenProps<RootStack
                 <View style={{justifyContent: 'center', marginTop: '20%', alignItems: 'center', gap: 40}}>
                     <View>
                     <Text style={{fontSize: 22, fontWeight: '600', textAlign: 'center'}}>Вы успешно</Text>
-                    <Text style={{fontSize: 22, fontWeight: '600', textAlign: 'center'}}>зарегестрированы! </Text>
+                    <Text style={{fontSize: 22, fontWeight: '600', textAlign: 'center'}}>авторизованы! </Text>
                     </View>
                     <SuccessIcon/>
                 </View>

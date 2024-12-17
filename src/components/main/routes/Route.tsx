@@ -13,9 +13,16 @@ interface RouteProps {
     description: string,
     atributes: {title: string, text: string, type: string}[],
     time: string,
+    url: string,
     distance: string,
     countPlaces: string,
     childrenAllowed: boolean,
+    places: {
+        img: string,
+        title: string,
+        description: string,
+        travelTime: string
+      }[],
     navigate: (route: string, props?: Record<string, any>) => void
 }
 
@@ -34,7 +41,8 @@ export const Route: React.FC<RouteProps> = (props) => {
             {like ? <LikeActiveIcon /> : <LikeIcon />}
         </TouchableOpacity>
         <TouchableOpacity onPress={() => props.navigate('RouteCard', { title: props.title, 
-            description: props.description, atributes: props.atributes })} style={styles.imageBox}>
+            description: props.description, atributes: props.atributes, url: props.url, 
+            places: props.places })} style={styles.imageBox}>
             <Image source={{ uri: props.images[0] }} style={styles.image} />
         </TouchableOpacity>
         <Text style={styles.title}>{props.title}</Text>

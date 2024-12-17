@@ -28,7 +28,14 @@ export type RootStackParamList = {
   RouteCard: {
     title: string
     description: string
-    atributes: {title: string, text: string, type: string}[],
+    atributes: Tab[],
+    url: string,
+    places: {
+      img: string,
+      title: string,
+      description: string,
+      travelTime: string
+    }[]
   }
 };
 
@@ -45,10 +52,10 @@ const Routes = () => {
         headerTitleAlign: 'center'
       }}
     >
-       <Stack.Screen name="Registration" component={RegistrationPage} />
-       <Stack.Screen name="Login" component={LoginPage} />
-       <Stack.Screen name="SuccessAuth" component={SuccessAuthPage} />
-       <Stack.Screen name='RouteCard' component={RouteCardPage}/>
+      <Stack.Screen name="Registration" component={RegistrationPage} />
+      <Stack.Screen name="Login" component={LoginPage} />
+      <Stack.Screen name="SuccessAuth" component={SuccessAuthPage} />
+      <Stack.Screen name='RouteCard' component={RouteCardPage} />
 
       <Stack.Screen
         name='Main'
